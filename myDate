@@ -1,0 +1,75 @@
+package com.company;
+import java.util.Scanner;
+
+public class myDate {
+    private int day; int month; int year;
+
+
+        String[] myMonth = {"January", "February","March","April","May","June","July","August","September","November","December"};
+
+    public myDate(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
+    boolean isLeapYear()
+    {
+        //If multiple of 400, then it is leap year
+        if (year % 400 == 0)
+            return true;
+        //If multiple of 100, not a leap year
+        if (year % 100 == 0)
+            return false;
+        if (year % 4 == 0)
+            return true;
+        return false;
+    }
+
+    String shortDate(){
+        return this.month + "/" + this.day + "/" + this.year;
+    }
+
+    String longDate(){
+        return myMonth[this.month - 1] + " " + this.day + ", " + this.year;
+    }
+
+    public int getDay(){
+        return day;
+    }
+
+    public String getMonthName(){
+        return myMonth[this.month - 1];
+    }
+
+    public int daysInMonth(){
+            if(this.month == 2){
+                if(isLeapYear())
+                    return 29;
+                else
+                    return 28;
+            }else if(this.month==1 || this.month == 3 || this.month == 5 || this.month == 7 ||
+                this.month == 8 || this.month == 10 || this.month == 12){
+            return 31;
+        }else{
+            return 30;
+                }
+        }
+
+        public int getYear() {
+            return year;
+        }
+
+        public String getSeason(){
+            if(month == 3 || month == 4 || month == 5) {
+                return "Spring";
+            }else if(month == 6 || month == 7 || month == 8) {
+                return "Summer";
+            }else if(month == 9 || month == 10 || month == 11) {
+                return "Fall";
+            }else{
+                return "Winter";
+            }
+        }
+}
+
